@@ -1,0 +1,59 @@
+<!doctype html>
+<!--
+ This page is shown when the extension button is clicked, because the
+ "browser_action" field in manifest.json contains the "default_popup" key with
+ value "popup.html".
+ -->
+<html>
+  <head>
+    <title>Swappity Swap Something!</title>
+    <link rel="stylesheet" href="/css/main.css" media="screen">
+    <script src="js/jquery.js"></script>
+    <script src="js/popup.js"></script>
+  </head>
+  <body class="replace-body">
+    <div class="replace-container">
+      <form class="replace-form">
+        <div class="replace-inputs">
+          <div class="replace-input-container">
+            <label for="o">Original Text<span class="small-italic"> - case sensitive</span></label>
+            <input id="o" type="text" value="">
+          </div>
+          <div class="replace-input-container">
+            <label for="r">Swap With</label>
+            <input id="r" type="text" value="">
+          </div>
+        </div>
+        <div class="replace-submit">
+          <input class="replace-btn" type="submit" name="replace-btn" value="Swap">
+        </div>
+      </form>
+    </div>
+    <div class="replaced-header">Current Swaps</div>
+    <div class="replaced-list"></div>
+    <div class="reset-container">
+      <div class="reset">
+        Reset all
+      </div>
+    </div>
+    <div class="options-header">Options <img class="chevron" src="./images/chevron-down.svg" alt="down" /></div>
+    <div class="options-container">
+      <div class="options">
+        <div class="import">
+          Import
+        </div>
+        <div class="export">
+          Export
+        </div>
+        <div class="options-message"></div>
+      </div>
+      <div class="json-export">
+        <pre class="json-code"></pre>
+      </div>
+      <div class="json-import">
+        <textarea class="json-import-textarea" name="import"></textarea>
+        <input class="json-import-submit" type="button" name="import" value="Submit">
+      </div>
+    </div>
+  </body>
+</html>

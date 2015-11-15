@@ -1,0 +1,262 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+}
+
+.small-italic {
+  font-size: 12px;
+  font-style: italic;
+  font-weight: 300;
+}
+
+input[type="text"] {
+  border: none;
+  outline: none;
+  box-shadow: none;
+  border-radius: 0;
+  resize: none;
+  appearance: none;
+}
+
+.replace-body {
+  margin: 0;
+  padding: 15px;
+  width: 500px;
+}
+
+.replace-inputs {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.replace-input-container {
+  width: 47%;
+}
+
+.replace-inputs label {
+  color: #999;
+  display: block;
+  font-size: 12px;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 700;
+  margin-bottom: 3px;
+}
+
+.replace-inputs input {
+  border-bottom: 1px solid #e6e6e6;
+  font-size: 16px;
+  font-weight: 300;
+  height: 30px;
+  width: 100%;
+}
+
+.replace-submit {
+  overflow: hidden;
+}
+
+.warning {
+  color: red;
+  font-size: 12px;
+}
+
+.replace-btn {
+  color: #fff;
+  cursor: pointer;
+  background: #2979ff;
+  height: 25px;
+  float: right;
+  font-size: 14px;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
+  padding: 0 8px;
+
+  border: none;
+  outline: none;
+  box-shadow: none;
+  border-radius: 0;
+  resize: none;
+  appearance: none;
+}
+
+.replace-btn:hover {
+  background: #0C5EE6;
+  transition: all .1s ease;
+}
+
+.replaced-header,
+.options-header {
+  font-size: 18px;
+  font-weight: 700;
+  border-bottom: 1px solid #e6e6e6;
+  margin: 15px 0;
+  padding-bottom: 5px;
+}
+
+.options-header {
+  font-size: 16px;
+}
+
+.replaced-list {
+  margin-top: 25px;
+}
+
+.replaced-item {
+  align-items: center;
+  border-top: 1px solid #fafafa;
+  border-bottom: 1px solid #fafafa;
+  display: flex;
+  height: 30px;
+  padding-left: 5px;
+}
+
+.replaced-item.empty {
+  border: none;
+}
+
+.original-text,
+.replaced-text {
+  width: 200px;
+}
+
+.is-now-container {
+  text-align: center;
+  width: 50px;
+}
+
+.is-now {
+  transform: rotate(90deg);
+}
+
+.delete-item {
+  align-items: center;
+  display: flex;
+  cursor: pointer;
+  height: 15px;
+  justify-content: center;
+  width: 15px;
+}
+
+.reset-container {
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+.reset {
+  color: red;
+  cursor: pointer;
+  float: right;
+}
+
+.options-header {
+  cursor: pointer;
+}
+
+.options-container {
+  /* Display gets toggled from jQuery */
+  display: none;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.options {
+  overflow: hidden;
+  margin-bottom: 25px;
+}
+
+.chevron {
+  height: 20px;
+  margin-left: 5px;
+  transform: rotate(0);
+  vertical-align: middle;
+  width: 20px;
+  transition: all .15s ease;
+}
+
+.chevron-up {
+  transform: rotate(180deg);
+}
+
+.import,
+.export {
+  background-color: #fafafa;
+  cursor: pointer;
+  float: left;
+  margin-right: 15px;
+  padding: 5px 10px;
+  transition: all .15s ease;
+}
+
+.import:hover,
+.export:hover {
+  background-color: #2979ff;
+  color: #fff;
+}
+
+.selected {
+  background-color: #2979ff;
+  color: #fff;
+}
+
+.options-message {
+  float: left;
+  height: 27px;
+  font-size: 12px;
+  line-height: 27px;
+}
+
+.json-export {
+  background: #f4f4f4;
+  border: 1px solid #ccc;
+  display: none;
+  padding: 15px;
+}
+
+.json-code {
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+.json-import {
+  display: none;
+}
+
+.json-import-textarea {
+  background-color: #fff;
+  border: 1px solid #e6e6e6;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 14px;
+  outline: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 20px;
+  resize: none;
+  appearance: none;
+  height: 300px;
+  width: 100%;
+}
+
+.json-import-submit {
+  background: #2979ff;
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  font-size: 14px;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
+  height: 25px;
+  margin-top: 15px;
+  padding: 0 8px;
+
+  border: none;
+  outline: none;
+  box-shadow: none;
+  border-radius: 0;
+  resize: none;
+  appearance: none;
+}

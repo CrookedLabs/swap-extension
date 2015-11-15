@@ -1,0 +1,28 @@
+{
+  "manifest_version": 2,
+
+  "name": "Swappity Swap Swap",
+  "description": "Swap shit on the webs.",
+  "version": "1.1",
+
+   "browser_action": {
+    "default_icon": "images/icon.png",
+    "default_popup": "popup.html"
+  },
+
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "js/content.js"
+      ],
+      "run_at": "document_end"
+    }
+  ],
+
+  "permissions": [
+    "tabs", "http://*/*", "https://*/*", "storage"
+  ]
+}
