@@ -1,13 +1,23 @@
 {
   "manifest_version": 2,
 
-  "name": "Swappity Swap Swap",
-  "description": "Swap shit on the webs.",
-  "version": "1.1",
+  "name": "Swappity Swap",
+  "description": "Replace Your Web.",
+  "version": "1.0",
 
    "browser_action": {
-    "default_icon": "images/icon.png",
-    "default_popup": "popup.html"
+    "default_icon": {
+      "19": "images/icon19.png",
+      "38": "images/icon38.png"
+    },
+    "default_popup": "popup.html",
+    "default_title": "Swappity Swap"
+  },
+
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
   },
 
   "content_scripts": [
@@ -18,7 +28,8 @@
       "js": [
         "js/content.js"
       ],
-      "run_at": "document_end"
+      "run_at": "document_start",
+      "all_frames": true
     }
   ],
 

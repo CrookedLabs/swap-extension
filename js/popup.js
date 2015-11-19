@@ -33,7 +33,6 @@ $(function () {
         });
         itemsArr.push(obj);
 
-        console.log(itemsArr);
         setToSyncStorage(itemsArr);
 
         emptyInputs();
@@ -175,7 +174,7 @@ $(function () {
   // Delete storage item
   function deleteItem(items) {
     $('.delete-item').on('click', function (e) {
-      var storageKey = $(this).prevAll('.original-text').text().trim();
+      var storageKey = $(this).prevAll('.original-text').text();
 
       chrome.storage.sync.get(function (items) {
         var newArr = items.itemsStorage.itemsArr.filter(function (item) {
@@ -233,6 +232,7 @@ $(function () {
     inputs.each(function () {
       $(this).val("");
     });
+    inputs.first().focus();
   }
 
   // Get objects to display in popup
