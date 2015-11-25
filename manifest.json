@@ -2,8 +2,8 @@
   "manifest_version": 2,
 
   "name": "Swappity Swap",
-  "description": "Replace Your Web.",
-  "version": "1.0",
+  "description": "Swap words on the web with anything you want.",
+  "version": "1.0.1",
 
    "browser_action": {
     "default_icon": {

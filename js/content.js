@@ -1,7 +1,23 @@
 // TODO: storage onchange when user adds new stuff, reload
 
+function walkTheDOM(node, func) {
+  func(node);
+  node = node.firstChild;
+  while (node) {
+    walkTheDOM(node, func);
+    node = node.nextSibling;
+  }
+}
+
 function getFromSyncStorage() {
   chrome.storage.sync.get(function (items) {
+
+    walkTheDOM(document, function (node) {
+      if (node.nodeType === 3) {
+        console.log("WALK");
+        replaceText(node);
+      }
+    });
 
     function replaceText(textNode) {
       var text = textNode.data;
@@ -16,15 +32,20 @@ function getFromSyncStorage() {
     }
 
     var observer = new MutationObserver(function(mutations) {
-      mutations.forEach(function(mutation) {
-        if (mutation.addedNodes) {
-          [].slice.call(mutation.addedNodes).forEach(function(node) {
-            if (node.nodeName.toLowerCase() == "#text") {
-              replaceText(node);
-            }
-          });
-        }
-      });
+      try {
+        mutations.forEach(function(mutation) {
+          if (mutation.addedNodes) {
+            [].slice.call(mutation.addedNodes).forEach(function(node) {
+              if (node.nodeName.toLowerCase() == "#text") {
+                console.log("MUTATE");
+                replaceText(node);
+              }
+            });
+          }
+        });
+      } catch (e) {
+        console.log(e);
+      }
     });
 
     observer.observe(document, {
