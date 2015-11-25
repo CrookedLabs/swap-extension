@@ -1,5 +1,3 @@
-// TODO: storage onchange when user adds new stuff, reload
-
 function walkTheDOM(node, func) {
   func(node);
   node = node.firstChild;
