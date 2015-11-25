@@ -14,7 +14,6 @@ function getFromSyncStorage() {
 
     walkTheDOM(document, function (node) {
       if (node.nodeType === 3) {
-        console.log("WALK");
         replaceText(node);
       }
     });
@@ -37,7 +36,6 @@ function getFromSyncStorage() {
           if (mutation.addedNodes) {
             [].slice.call(mutation.addedNodes).forEach(function(node) {
               if (node.nodeName.toLowerCase() == "#text") {
-                console.log("MUTATE");
                 replaceText(node);
               }
             });
