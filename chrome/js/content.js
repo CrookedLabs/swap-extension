@@ -51,4 +51,6 @@ function getFromSyncStorage() {
   });
 }
 
-getFromSyncStorage();
+setTimeout(function() {
+  getFromSyncStorage();
+}, 50);
