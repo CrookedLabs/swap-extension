@@ -1,3 +1,9 @@
+function getFromSyncStorage(cb) {
+  chrome.storage.sync.get(function (items) {
+    cb(items);
+  });
+}
+
 function walkTheDOM(node, func) {
   func(node);
   node = node.firstChild;
@@ -7,30 +13,24 @@ function walkTheDOM(node, func) {
   }
 }
 
-function getFromSyncStorage(cb) {
-  chrome.storage.sync.get(function (items) {
-    cb(items);
-  });
+function replaceText(node, items) {
+  var text = node.data;
+
+  if(items && items.itemsStorage) {
+    var newItemsArr = items.itemsStorage.itemsArr;
+    newItemsArr.forEach(function (el,i,arr) {
+      text = text.replace(el.o, el.r);
+    });
+  }
+  node.data = text;
 }
 
-function doReplace(items) {
+function replace(items) {
   walkTheDOM(document, function (node) {
     if (node.nodeType === 3) {
-      replaceText(node);
+      replaceText(node, items);
     }
   });
-
-  function replaceText(textNode) {
-    var text = textNode.data;
-
-    if(items && items.itemsStorage) {
-      var newItemsArr = items.itemsStorage.itemsArr;
-      newItemsArr.forEach(function (el,i,arr) {
-        text = text.replace(el.o, el.r);
-      });
-    }
-    textNode.data = text;
-  }
 
   var observer = new MutationObserver(function(mutations) {
     try {
@@ -39,7 +39,7 @@ function doReplace(items) {
           [].slice.call(mutation.addedNodes).forEach(function(node) {
             walkTheDOM(node, function (node) {
               if (node.nodeType === 3) {
-                replaceText(node);
+                replaceText(node, items);
               }
             });
           });
@@ -56,4 +56,4 @@ function doReplace(items) {
   });
 }
 
-getFromSyncStorage(doReplace);
+getFromSyncStorage(replace);
