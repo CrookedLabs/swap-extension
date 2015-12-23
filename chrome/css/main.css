@@ -122,8 +122,8 @@ input[type="text"] {
   border-top: 1px solid #fafafa;
   border-bottom: 1px solid #fafafa;
   display: flex;
-  height: 30px;
-  padding-left: 5px;
+  min-height: 30px;
+  padding: 5px;
 }
 
 .replaced-item.empty {
