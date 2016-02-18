@@ -3,7 +3,7 @@
 
   "name": "Swappity Swap",
   "description": "Swap words on the web with anything you want.",
-  "version": "1.0.7",
+  "version": "1.0.8",
 
    "browser_action": {
     "default_icon": {
