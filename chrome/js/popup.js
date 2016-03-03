@@ -7,13 +7,20 @@ $(function () {
   var feedbackThanks = $(".feedback-ty");
 
   ///// User actions
+
+  // Click rate
+  $(".rate").on("click", function() {
+    mixpanel.track("Rate App");
+  })
+
+  // Toggle feedback
   $(".feedback-toggle").on("click", function() {
     if (!$(this).hasClass("active")) {
       mixpanel.track("Feedback Link", {
         "text": $(this).text()
       });
     }
-    
+
     emptyWarning();
     $(this).toggleClass("active");
     feedbackModal.toggle();
