@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Swappity Swap Something!</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <link rel="stylesheet" href="/css/main.css" media="screen">
   <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,300' rel='stylesheet' type='text/css'>
   <script src="js/jquery-2.1.4.min.js"></script>
@@ -9,33 +10,51 @@
   <script src="js/mixpanel.js"></script>
 </head>
 <body>
-  <div class="brand">Swappity Swap</div>
-  <div class="replace-body">
-    <div class="replaced-header">New Swap</div>
-    <div class="replace-container">
-      <form class="replace-form">
-        <div class="replace-inputs">
-          <div class="replace-input-container">
-            <label for="o">Original Text<span class="small-italic"> - case sensitive</span></label>
-            <input id="o" type="text" value="">
+  <div class="brand">
+    <div>Swappity Swap</div>
+    <div class="feedback-toggle">We Hear Voices</div>
+  </div>
+  <div class="replace-container">
+    <div class="replace-body">
+      <div class="replaced-header">New Swap</div>
+      <div class="replace-container">
+        <form class="replace-form">
+          <div class="replace-inputs">
+            <div class="replace-input-container">
+              <label for="o">Original Text<span class="small-italic"> - case sensitive</span></label>
+              <input id="o" type="text" value="">
+            </div>
+            <div class="replace-input-container">
+              <label for="r">Swap With</label>
+              <input id="r" type="text" value="">
+            </div>
           </div>
-          <div class="replace-input-container">
-            <label for="r">Swap With</label>
-            <input id="r" type="text" value="">
+          <div class="replace-submit">
+            <input class="submit-btn" type="submit" value="Swap">
           </div>
+        </form>
+      </div>
+      <div class="replaced-header">Current Swaps</div>
+      <div class="replaced-list"></div>
+      <div class="reset-container">
+        <div class="reset">
+          Reset all
         </div>
-        <div class="replace-submit">
-          <input class="replace-btn" type="submit" name="replace-btn" value="Swap">
-        </div>
-      </form>
-    </div>
-    <div class="replaced-header">Current Swaps</div>
-    <div class="replaced-list"></div>
-    <div class="reset-container">
-      <div class="reset">
-        Reset all
       </div>
     </div>
+    <div class="feedback-modal">
+      <div class="replaced-header">Feedback time, yaaaaaay!</div>
+      <form id="feedback">
+        <label for="email">Email</label>
+        <input name="email" type="text" id="feedback-email" value="" />
+        <label for="feedback" class="feedback-label">Feedback</label>
+        <textarea name="feedback" id="feedback-textarea" cols="30" rows="10" placeholder="Voicing feedback is how products improve for the people that love using them. Let us know what you're thinking and how we can improve this thingamajig!"></textarea>
+        <input class="submit-btn" type="submit" value="Submit" />
+        <div class="rate">if you like it, <a href="https://chrome.google.com/webstore/detail/swappity-swap/pjobfphiicdhkdfoadokeggkcaeneiel" target="_blank">rate</a> it!</div>
+      </form>
+    </div>
+    <div class="feedback-submitting">Submitting...</div>
+    <div class="feedback-ty">Thank you for submitting some feedback. Our Swappers are on it!</div>
   </div>
 </body>
 </html>

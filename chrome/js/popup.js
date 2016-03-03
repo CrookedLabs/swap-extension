@@ -1,9 +1,72 @@
 $(function () {
   ///// Element setup
   var optionsMessage = $(".options-message");
-
+  var feedbackBtn = $(".feedback-toggle");
+  var feedbackModal = $(".feedback-modal");
+  var feedbackSubmitting = $(".feedback-submitting");
+  var feedbackThanks = $(".feedback-ty");
 
   ///// User actions
+  $(".feedback-toggle").on("click", function() {
+    if (!$(this).hasClass("active")) {
+      mixpanel.track("Feedback Link", {
+        "text": $(this).text()
+      });
+    }
+    
+    emptyWarning();
+    $(this).toggleClass("active");
+    feedbackModal.toggle();
+  });
+
+  // Submit feedback
+  var request;
+  $("#feedback").on("submit", function(e) {
+    e.preventDefault();
+    emptyWarning();
+
+    if (request) {
+      request.abort();
+    }
+
+    var email = $("#feedback-email").val();
+
+    if (validateEmail(email)) {
+      feedbackSubmitting.toggle();
+
+      var $form = $(this);
+      var $inputs = $form.find("input[type='text'], textarea");
+      var serializedData = $form.serialize();
+
+      $inputs.prop("disabled", true);
+
+      request = $.ajax({
+        url: "https://script.google.com/macros/s/AKfycbyBto2rr29_U5b4qhikd5zjhPqtv7GeLjpKqcmTCdzdh0Fa5jM/exec",
+        type: "post",
+        data: serializedData
+      }).done(function(response, textStatus, jqXHR) {
+        feedbackThanks.toggle();
+        feedbackSubmitting.toggle();
+
+        $inputs.each(function() {
+          $(this).val("");
+        });
+        console.log("feedback submitted.");
+
+        window.setTimeout(function() {
+          feedbackModal.toggle();
+          feedbackThanks.toggle();
+          feedbackBtn.toggleClass("active");
+        }, 3000);
+      }).fail(function(jqXHR, textStatus, error) {
+        console.log("The following error occurred: " + textStatus, error);
+      }).always(function() {
+        $inputs.prop("disabled", false);
+      });
+    } else {
+      showEmailWarning();
+    }
+  });
 
   // Submit entry to sync storage
   $('.replace-form').on('submit', function (e) {
@@ -44,6 +107,8 @@ $(function () {
   // Clear entire storage
   $(".reset").on('click', function () {
     chrome.storage.sync.clear();
+
+    mixpanel.track("Delete All");
 
     emptyWarning();
   });
@@ -123,6 +188,13 @@ $(function () {
 
       chrome.storage.sync.get(function (items) {
         var newArr = items.itemsStorage.itemsArr.filter(function (item) {
+          if (item.o === storageKey) {
+            mixpanel.track("Deleted", {
+              "original": item.o,
+              "replaced": item.r
+            });
+          }
+
           return item.o !== storageKey;
         });
         items.itemsStorage.itemsArr = newArr;
@@ -178,6 +250,15 @@ $(function () {
       $(this).val("");
     });
     inputs.first().focus();
+  }
+
+  function showEmailWarning() {
+    $("<span class='warning'>Please enter a valid email!</span>").insertAfter("#feedback-email");
+  }
+
+  function validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
   }
 
   // Get objects to display in popup
