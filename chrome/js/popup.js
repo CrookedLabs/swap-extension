@@ -58,7 +58,11 @@ $(function () {
         $inputs.each(function() {
           $(this).val("");
         });
-        console.log("feedback submitted.");
+
+        mixpanel.track("Leave Feedback", {
+          "success": true,
+          "email": email
+        });
 
         window.setTimeout(function() {
           feedbackModal.toggle();
@@ -72,6 +76,10 @@ $(function () {
       });
     } else {
       showEmailWarning();
+      mixpanel.track("Leave Feedback", {
+        "success": false,
+        "email": email
+      })
     }
   });
 
