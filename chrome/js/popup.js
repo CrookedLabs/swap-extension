@@ -5,6 +5,19 @@ $(function () {
   var feedbackModal = $(".feedback-modal");
   var feedbackSubmitting = $(".feedback-submitting");
   var feedbackThanks = $(".feedback-ty");
+  var originalInput = $("#o");
+  var replacedInput = $("#r");
+
+  var SWAPS = [
+    {"original": "ex: John Stamos", "replaced": "Uncle Jesse"},
+    {"original": "ex: Anderson Cooper", "replaced": "Anderson Pooper"},
+    {"original": "ex: moist", "replaced": "kinda wet"}
+  ];
+
+  var randPlaceholder = SWAPS[Math.floor(Math.random() * SWAPS.length)];
+  console.log(randPlaceholder);
+  originalInput.attr("placeholder", randPlaceholder.original);
+  replacedInput.attr("placeholder", randPlaceholder.replaced);
 
   ///// User actions
 
@@ -224,16 +237,6 @@ $(function () {
   }
 
   //// Helper functions
-  function optionsMessageFunc(message, success) {
-    if (success) {
-      optionsMessage.text(message).css("color", "#2979ff");
-      setTimeout(function() {
-        optionsMessage.text("");
-      }, 3000);
-    } else {
-      optionsMessage.text(message).css("color", "#999999");
-    }
-  }
 
   // Empty object check
   function isEmpty(obj) {

@@ -127,6 +127,12 @@ textarea {
   width: 47%;
 }
 
+.replace-input-container input::-webkit-input-placeholder {
+  color: #cccccc;
+  font-size: 12px;
+  font-style: italic;
+}
+
 .replace-submit {
   overflow: hidden;
 }
