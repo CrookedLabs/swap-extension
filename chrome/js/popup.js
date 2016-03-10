@@ -23,18 +23,18 @@ $(function () {
 
   // Click rate
   $(".rate").on("click", function() {
-    mixpanel.track("Rate App");
+    analytics.track("Rate App");
   });
 
   // Social tracking
   $(".facebook-share").on("click", function() {
-    mixpanel.track("Share", {
+    analytics.track("Share", {
       "network": "Facebook"
     });
   });
 
   $(".twitter-share").on("click", function() {
-    mixpanel.track("Share", {
+    analytics.track("Share", {
       "network": "Twitter"
     });
   });
@@ -42,8 +42,8 @@ $(function () {
   // Toggle feedback
   $(".feedback-toggle").on("click", function() {
     if (!$(this).hasClass("active")) {
-      mixpanel.track("Feedback Link", {
-        "text": $(this).text()
+      analytics.track("Feedback Link", {
+        text: $(this).text()
       });
     }
 
@@ -85,7 +85,7 @@ $(function () {
           $(this).val("");
         });
 
-        mixpanel.track("Leave Feedback", {
+        analytics.track("Leave Feedback", {
           "success": true,
           "email": email
         });
@@ -102,7 +102,7 @@ $(function () {
       });
     } else {
       showEmailWarning();
-      mixpanel.track("Leave Feedback", {
+      analytics.track("Leave Feedback", {
         "success": false,
         "email": email
       })
@@ -136,7 +136,7 @@ $(function () {
 
       setToSyncStorage(itemsArr);
 
-      mixpanel.track("Swapped", {
+      analytics.track("Swapped", {
         "original": o,
         "replaced": r
       });
@@ -149,7 +149,7 @@ $(function () {
   $(".reset").on('click', function () {
     chrome.storage.sync.clear();
 
-    mixpanel.track("Delete All");
+    analytics.track("Delete All");
 
     emptyWarning();
   });
@@ -215,7 +215,7 @@ $(function () {
       reset.hide();
 
       replacedItem = '<div class="replaced-item empty">' +
-      '<div class="noitems">You haven\'t replaced anything!' +
+      '<div class="noitems">You haven\'t swapped anything!' +
       '</div>';
 
       $(replacedItem).appendTo(replacedList);
@@ -230,7 +230,7 @@ $(function () {
       chrome.storage.sync.get(function (items) {
         var newArr = items.itemsStorage.itemsArr.filter(function (item) {
           if (item.o === storageKey) {
-            mixpanel.track("Deleted", {
+            analytics.track("Deleted", {
               "original": item.o,
               "replaced": item.r
             });
