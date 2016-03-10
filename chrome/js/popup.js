@@ -15,7 +15,7 @@ $(function () {
   ];
 
   var randPlaceholder = SWAPS[Math.floor(Math.random() * SWAPS.length)];
-  
+
   originalInput.attr("placeholder", randPlaceholder.original);
   replacedInput.attr("placeholder", randPlaceholder.replaced);
 
@@ -24,7 +24,20 @@ $(function () {
   // Click rate
   $(".rate").on("click", function() {
     mixpanel.track("Rate App");
-  })
+  });
+
+  // Social tracking
+  $(".facebook-share").on("click", function() {
+    mixpanel.track("Share", {
+      "network": "Facebook"
+    });
+  });
+
+  $(".twitter-share").on("click", function() {
+    mixpanel.track("Share", {
+      "network": "Twitter"
+    });
+  });
 
   // Toggle feedback
   $(".feedback-toggle").on("click", function() {
