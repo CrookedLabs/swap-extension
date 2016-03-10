@@ -43,7 +43,7 @@ label {
 textarea {
   border: 1px solid #e6e6e6;
   font-size: 14px;
-  height: 150px;
+  height: 130px;
   padding: 10px;
   margin-bottom: 10px;
   resize: vertical;
@@ -212,6 +212,30 @@ textarea {
   transform: rotate(90deg);
   -webkit-transform: rotate(90deg);
 }
+
+.share-footer {
+  align-items: center;
+  background-color: #7047A3;
+  color: #ffffff;
+  display: flex;
+  padding: 8px 10px;
+}
+
+.share-footer > div {
+  height: 15px;
+  line-height: 1;
+}
+
+.share-footer-text {
+  margin-right: 8px;
+}
+
+.share-icon {
+  margin: 0 5px;
+}
+
+
+/* Options */
 
 .delete-item {
   align-items: center;

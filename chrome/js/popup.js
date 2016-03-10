@@ -15,7 +15,7 @@ $(function () {
   ];
 
   var randPlaceholder = SWAPS[Math.floor(Math.random() * SWAPS.length)];
-  console.log(randPlaceholder);
+  
   originalInput.attr("placeholder", randPlaceholder.original);
   replacedInput.attr("placeholder", randPlaceholder.replaced);
 
