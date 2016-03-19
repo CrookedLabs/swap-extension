@@ -7,11 +7,13 @@ $(function () {
   var feedbackThanks = $(".feedback-ty");
   var originalInput = $("#o");
   var replacedInput = $("#r");
+  var rateLink = $(".rate-link");
 
   var SWAPS = [
     {"original": "ex: John Stamos", "replaced": "Uncle Jesse"},
     {"original": "ex: Anderson Cooper", "replaced": "Anderson Pooper"},
-    {"original": "ex: moist", "replaced": "kinda wet"}
+    {"original": "ex: moist", "replaced": "kinda wet"},
+    {"original": "ex: Donald Trump", "replaced": "Donald Drumpf"}
   ];
 
   var randPlaceholder = SWAPS[Math.floor(Math.random() * SWAPS.length)];
@@ -22,9 +24,7 @@ $(function () {
   ///// User actions
 
   // Click rate
-  $(".rate").on("click", function() {
-    analytics.track("Rate App");
-  });
+  analytics.trackLink(rateLink, "Rate App");
 
   // Social tracking
   $(".facebook-share").on("click", function() {

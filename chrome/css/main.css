@@ -89,11 +89,13 @@ textarea {
 }
 
 .feedback-toggle {
-  color: #9080B7;
+  color: #B9AED6;
   cursor: pointer;
   display: inline-block;
   font-size: 12px;
   text-align: right;
+  -webkit-transition: color .1s ease;
+  transition: color .1s ease;
 }
 
 .feedback-toggle:hover {
@@ -232,6 +234,15 @@ textarea {
 
 .share-icon {
   margin: 0 5px;
+}
+
+.share-icon img {
+  -webkit-transition: opacity .15s ease;
+  transition: opacity .15s ease;
+}
+
+.share-icon img:hover {
+  opacity: .5;
 }
 
 
